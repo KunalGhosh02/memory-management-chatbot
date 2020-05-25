@@ -5,13 +5,13 @@
 
 #include <string>
 
-class GraphNode;  // forward declaration
-class ChatLogic;  // forward declaration
+class GraphNode; // forward declaration
+class ChatLogic; // forward declaration
 
 class ChatBot {
- private:
+private:
   // data handles (owned)
-  wxBitmap *_image;  // avatar image
+  wxBitmap *_image; // avatar image
 
   // data handles (not owned)
   GraphNode *_currentNode;
@@ -21,15 +21,18 @@ class ChatBot {
   // proprietary functions
   int ComputeLevenshteinDistance(std::string s1, std::string s2);
 
- public:
+public:
   // constructors / destructors
-  ChatBot();                      // constructor WITHOUT memory allocation
-  ChatBot(std::string filename);  // constructor WITH memory allocation
+  ChatBot();                     // constructor WITHOUT memory allocation
+  ChatBot(std::string filename); // constructor WITH memory allocation
   ~ChatBot();
 
   //// STUDENT CODE
   ////
-
+  ChatBot(const ChatBot &source);
+  ChatBot &operator=(const ChatBot &source);
+  ChatBot(ChatBot &&source);
+  ChatBot &operator=(ChatBot &&source);
   ////
   //// EOF STUDENT CODE
 

@@ -71,7 +71,7 @@ void ChatBotFrame::OnEnter(wxCommandEvent &WXUNUSED(event)) {
 }
 
 BEGIN_EVENT_TABLE(ChatBotFrameImagePanel, wxPanel)
-EVT_PAINT(ChatBotFrameImagePanel::paintEvent)  // catch paint events
+EVT_PAINT(ChatBotFrameImagePanel::paintEvent) // catch paint events
 END_EVENT_TABLE()
 
 ChatBotFrameImagePanel::ChatBotFrameImagePanel(wxFrame *parent)
@@ -103,7 +103,7 @@ void ChatBotFrameImagePanel::render(wxDC &dc) {
 }
 
 BEGIN_EVENT_TABLE(ChatBotPanelDialog, wxPanel)
-EVT_PAINT(ChatBotPanelDialog::paintEvent)  // catch paint events
+EVT_PAINT(ChatBotPanelDialog::paintEvent) // catch paint events
 END_EVENT_TABLE()
 
 ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
@@ -119,7 +119,7 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
   ////
 
   // create chat logic instance
-  _chatLogic = new ChatLogic();
+  _chatLogic = std::make_unique<ChatLogic>();
 
   // pass pointer to chatbot dialog so answers can be displayed in GUI
   _chatLogic->SetPanelDialogHandle(this);
@@ -135,8 +135,6 @@ ChatBotPanelDialog::~ChatBotPanelDialog() {
   //// STUDENT CODE
   ////
 
-  delete _chatLogic;
-
   ////
   //// EOF STUDENT CODE
 }
@@ -150,7 +148,7 @@ void ChatBotPanelDialog::AddDialogItem(wxString text, bool isFromUser) {
   _dialogSizer->Layout();
 
   // make scrollbar show up
-  this->FitInside();  // ask the sizer about the needed size
+  this->FitInside(); // ask the sizer about the needed size
   this->SetScrollRate(5, 5);
   this->Layout();
 

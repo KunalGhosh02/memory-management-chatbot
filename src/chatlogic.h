@@ -12,13 +12,14 @@ class GraphEdge;
 class GraphNode;
 
 class ChatLogic {
- private:
+private:
   //// STUDENT CODE
   ////
 
   // data handles (owned)
-  std::vector<GraphNode *> _nodes;
   std::vector<GraphEdge *> _edges;
+
+  std::vector<std::unique_ptr<GraphNode>> _nodes;
 
   ////
   //// EOF STUDENT CODE
@@ -36,7 +37,7 @@ class ChatLogic {
   void AddAllTokensToElement(std::string tokenID, tokenlist &tokens,
                              T &element);
 
- public:
+public:
   // constructor / destructor
   ChatLogic();
   ~ChatLogic();

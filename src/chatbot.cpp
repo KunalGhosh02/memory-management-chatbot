@@ -54,8 +54,9 @@ ChatBot::ChatBot(const ChatBot &source) {
 
 // overloaded copy assignment operator
 ChatBot &ChatBot::operator=(const ChatBot &source) {
-  std::cout << __FUNCTION__ << "copy assignment operator copying from "
-            << &source << " to " << this << std::endl;
+  std::cout << "ChatBot " << __FUNCTION__
+            << " copy assignment operator copying from " << &source << " to "
+            << this << std::endl;
   if (this == &source)
     return *this;
   delete _image;
@@ -67,7 +68,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
 
 // overloaded move constructor
 ChatBot::ChatBot(ChatBot &&source) {
-  std::cout << __FUNCTION__ << "move constructor moving from " << &source
+  std::cout << __FUNCTION__ << " move constructor moving from " << &source
             << " to " << this << std::endl;
   _chatLogic = source._chatLogic;
   _rootNode = source._rootNode;
@@ -79,8 +80,9 @@ ChatBot::ChatBot(ChatBot &&source) {
 
 // overloaded move assignment operator
 ChatBot &ChatBot::operator=(ChatBot &&source) {
-  std::cout << __FUNCTION__ << "move assinment operator moving from " << &source
-            << " to " << this << std::endl;
+  std::cout << "ChatBot " << __FUNCTION__
+            << " move assinment operator moving from " << &source << " to "
+            << this << std::endl;
   if (this == &source) {
     return *this;
   }
@@ -139,7 +141,7 @@ void ChatBot::SetCurrentNode(GraphNode *node) {
   std::mt19937 generator(int(std::time(0)));
   std::uniform_int_distribution<int> dis(0, answers.size() - 1);
   std::string answer = answers.at(dis(generator));
-
+  _chatLogic->SetChatbotHandle(this);
   // send selected node answer to user
   _chatLogic->SendMessageToUser(answer);
 }

@@ -1,8 +1,8 @@
 #include "graphnode.h"
 
-#include "graphedge.h"
-
 #include <memory>
+
+#include "graphedge.h"
 
 GraphNode::GraphNode(int id) { _id = id; }
 

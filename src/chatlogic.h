@@ -12,7 +12,7 @@ class GraphEdge;
 class GraphNode;
 
 class ChatLogic {
-private:
+ private:
   //// STUDENT CODE
   ////
 
@@ -34,7 +34,7 @@ private:
   void AddAllTokensToElement(std::string tokenID, tokenlist &tokens,
                              T &element);
 
-public:
+ public:
   // constructor / destructor
   ChatLogic();
   ~ChatLogic();
